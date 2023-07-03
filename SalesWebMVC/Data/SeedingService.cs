@@ -4,7 +4,7 @@ using SalesWebMVC.Models.Enums;
 namespace SalesWebMVC.Data {
     public class SeedingService {
 
-        public SalesWebMVCContext _context;
+        private readonly SalesWebMVCContext _context;
 
         public SeedingService(SalesWebMVCContext context) {
             _context = context;

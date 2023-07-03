@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using SalesWebMVC.Data;
+using SalesWebMVC.Services;
 
 namespace SalesWebMVC {
     public class Program {
@@ -12,6 +13,7 @@ namespace SalesWebMVC {
                                     ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("SalesWebMVCContext")), 
                                     builder => builder.MigrationsAssembly("SalesWebMVC")));
             builder.Services.AddScoped<SeedingService>();
+            builder.Services.AddScoped<SellerService>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
