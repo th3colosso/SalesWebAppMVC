@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Localization;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using SalesWebMVC.Data;
 using SalesWebMVC.Services;
+using System.Globalization;
 
 namespace SalesWebMVC {
     public class Program {
@@ -19,7 +21,16 @@ namespace SalesWebMVC {
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            var culture = new CultureInfo("en-US");
+            var localizationOptions = new RequestLocalizationOptions {
+                DefaultRequestCulture = new RequestCulture(culture),
+                SupportedCultures = new List<CultureInfo> { culture },
+                SupportedUICultures = new List<CultureInfo> { culture }
+            };
+
             var app = builder.Build();
+
+            app.UseRequestLocalization(localizationOptions);
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment()) {
