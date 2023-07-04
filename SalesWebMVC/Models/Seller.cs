@@ -20,7 +20,7 @@ namespace SalesWebMVC.Models {
         [DisplayFormat(DataFormatString = "{0:F2}")]
         [Range(100.0, 50000.0, ErrorMessage = "{0} must be from {1} to {2}!")]
         public double BaseSalary { get; set; }
-        public Department Department { get; set; }
+        public Department? Department { get; set; }
         public int DepartmentId { get; set; }
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
 
